@@ -8,6 +8,7 @@ function LandingPage() {
   useEffect(() => {
     setBanner(bannerData)
   }, [])
+  
   return (
     <>
       <div>
@@ -23,7 +24,7 @@ function LandingPage() {
           );
         })}
         </Carousel>
-        <div style={{textAlign: 'center', padding: '120px 0 60px'}}>
+        <div style={{textAlign: 'center', padding: '120px 0 60px', backgroundColor: '#fff'}}>
           <h1 style={{fontSize: '36px'}}>오늘 뭐 먹을까 고민은 그만!</h1>
           <div style={{padding: '36px 0 24px'}}>
             <p style={{fontSize: '24px'}}>.</p>

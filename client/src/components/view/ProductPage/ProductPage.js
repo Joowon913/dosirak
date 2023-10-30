@@ -5,8 +5,11 @@ import { productsData, hotData, deliveryData } from '../../../api/data'
 const { Meta } = Card;
 function ProductPage(props) {
   const [items, setItems] = useState([]);
+  // TODO 이후 API 통신을 통해 데이터를 가져올때 정렬기준으로 사용하기 위해 상태관리
+  const [sort, setSort] = useState();
 
   useEffect(() => {
+    // TODO 이후 API 통신을 통해 데이터 조회
     if(props.gubun === 'products') {
       setItems(productsData)
     } else if (props.gubun === 'hot') {
@@ -15,6 +18,37 @@ function ProductPage(props) {
       setItems(deliveryData);
     }
   }, [props.gubun]);
+
+  
+  const handlePrice = (type) => {
+    setSort(type);
+    const PriceItems = [...items].sort((a, b) =>  {
+      if(type === 'lowPrice') {
+        return a.price - b.price;
+      } else if(type === 'highPrice') {
+        return b.price - a.price;
+      } else {
+        return 0;
+      }
+    });
+    setItems(PriceItems);
+  };
+
+  const handleTitle = (type) => {
+    setSort(type);
+    const TitleItems = [...items].sort((a, b) => {
+      var titleA = a.title.toUpperCase();
+      var titleB = b.title.toUpperCase();
+      if (titleA < titleB) {
+        return -1;
+      }
+      if (titleA > titleB) {
+        return 1;
+      }
+      return 0;
+    });
+    setItems(TitleItems);
+  };
   
   return (
     <>
@@ -25,9 +59,9 @@ function ProductPage(props) {
           <div>등록제품: {items.length}개</div>
           <ul style={{display: 'flex', justifyContent: 'space-between'}}>
             <li>신상품 | &nbsp;</li>
-            <li>상품명 | &nbsp;</li>
-            <li>낮은가격 | &nbsp;</li>
-            <li>높은가격 | &nbsp;</li>
+            <a href="#" onClick={() => handleTitle('string')} style={{ color: 'black' }}><li>상품명 | &nbsp;</li></a>
+            <a href="#" onClick={() => handlePrice('lowPrice')} style={{ color: 'black' }}><li>낮은가격 | &nbsp;</li></a>
+            <a href="#" onClick={() => handlePrice('highPrice')} style={{ color: 'black' }}><li>높은가격 | &nbsp;</li></a>
             <a href="/review" style={{ color: 'black' }}><li>상품후기</li></a>
           </ul>
         </div>

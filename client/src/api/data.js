@@ -4,7 +4,7 @@ const productsData = [
     title: '전통 6가지 나물 비빔밥',
     desc: '6가지 나물과 현미밥으로 건강한 한상',
     price: '6900',
-    imgPath: '/img/food1.png'
+    imgPath: '/img/food1.png',
   },
   {
     seq: '2',

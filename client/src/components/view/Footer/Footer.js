@@ -1,10 +1,9 @@
 function Footer() {
   return (
     <div style={{ 
-      marginTop: '20px',
       display: 'grid',
       alignContent: 'center',
-      backgroundColor: '#fff',
+      backgroundColor: 'rgba(255, 255, 255, 0.6)',
       color: '#000',      
     }}>
     <div style={{margin: '20px 20px'}}>

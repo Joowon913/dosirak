@@ -19,8 +19,8 @@ const NavBar = () => {
     link: '/review'
   }]
 
-  const onClick = (e) => {
-    navigate(e.key)
+  const onClick = (menu) => {
+    navigate(menu.key)
   };
   
   return (
@@ -39,7 +39,7 @@ const NavBar = () => {
     </a>
     <Menu
       style={{
-        width: '100%'
+        width: '100%',
       }}
       theme="light"
       mode="horizontal"
